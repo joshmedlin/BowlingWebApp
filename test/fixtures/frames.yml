@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  turn: one
+  member: one
+  ball1: 1
+  ball2: 1
+  ball3: 1
+  score: 1
+  isfinal: false
+
+two:
+  turn: two
+  member: two
+  ball1: 1
+  ball2: 1
+  ball3: 1
+  score: 1
+  isfinal: false
