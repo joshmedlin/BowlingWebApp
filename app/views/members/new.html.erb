@@ -1,0 +1,20 @@
+<%= form_with scope: :member, url: members_path, local: true do |form| %>
+ <h2>Create New Member</h2>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :team %><br>
+    <%= form.text_area :team %>
+
+    <form.input type = "number">
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', members_path %>

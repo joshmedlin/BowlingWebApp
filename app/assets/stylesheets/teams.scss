@@ -1,0 +1,25 @@
+// Place all the styles related to the Teams controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+table#posttbl {
+  width: 100%;
+  table-layout: fixed;
+
+}
+table#posttbl tr:nth-child(even) {
+    background-color: #eee;
+}
+table#posttbl tr:nth-child(odd) {
+    background-color: #fff;
+}
+table#posttbl th,td {
+    height: 50px;
+    padding: 15px;
+    text-align: left;
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

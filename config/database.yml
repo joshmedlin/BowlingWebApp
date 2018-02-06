@@ -27,7 +27,7 @@ development:
   timeout: 5000
   host: localhost
   username: postgres
-  password: P@ssw0rd
+  password: password1
   database: BowlingWebApp_development
 
   # The specified database role being used to conP@ssw0rdnect to postgres.

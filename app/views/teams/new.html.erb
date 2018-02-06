@@ -1,0 +1,12 @@
+<%= form_with scope: :team, url: teams_path, local: true do |form| %>
+ <h2>Create New Team</h2>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', teams_path %>

@@ -1,0 +1,23 @@
+<h1>Listing all members</h1>
+
+<table id = "posttbl">
+  <tr>
+    <th>Name</th>
+    <th>Team</th>
+  </tr>
+
+  <% @members.each do |member| %>
+    <tr>
+      <td><%= member.name %></td>
+      <td><%= member.team %></td>
+      <td><%= link_to 'View', member_path(member) %></td>
+      <td><%= link_to 'Delete', member_path(member),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+<br>
+<br>
+
+<%= link_to 'New Member', members_new_path %>
