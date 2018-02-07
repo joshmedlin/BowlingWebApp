@@ -1,10 +1,13 @@
 class MembersController < ApplicationController
+
+
+
   def create
 
-    @member = Member.new
-    @member.team_id = :team.to_s.to_i
-    @member.name = :name
-    @member.save
+    @member = Member.new(member_params)
+#    @member.team_id = :team_id
+#    @member.name = :name
+    @member.save(validate:false)
     redirect_to @member
   end
 
@@ -24,6 +27,6 @@ class MembersController < ApplicationController
 
   private
   def member_params
-    params.require(:member).permit(:name, :team)
+    params.require(:member).permit(:name, :team_id)
   end
 end

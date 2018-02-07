@@ -3,13 +3,13 @@
 <table id = "posttbl">
   <tr>
     <th>Name</th>
-    <th>Team</th>
+    <th>Team ID</th>
   </tr>
 
   <% @members.each do |member| %>
     <tr>
       <td><%= member.name %></td>
-      <td><%= member.team %></td>
+      <td><%= Team.find(member.team_id).name %></td>
       <td><%= link_to 'View', member_path(member) %></td>
       <td><%= link_to 'Delete', member_path(member),
         method: :delete,
@@ -21,3 +21,6 @@
 <br>
 
 <%= link_to 'New Member', members_new_path %>
+<br>
+<br>
+<%= link_to 'View Teams', teams_path %>

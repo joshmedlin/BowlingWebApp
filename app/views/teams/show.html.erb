@@ -1,6 +1,6 @@
 
 <p>
-  <strong>Name:</strong>
+  <strong>Team Name:</strong>
   <%= @team.name %>
 </p>
 
@@ -8,5 +8,20 @@
   <strong>ID:</strong>
   <%= @team.id %>
 </p>
+<br>
+<br>
+
+
+<table id = "posttbl">
+  <tr>
+    <th>Members</th>
+  </tr>
+
+  <% Member.find(team_id: @team.id) do |members| %>
+    <tr>
+      <td><%= members.name %></td>
+    </tr>
+  <% end %>
+</table>
 
 <%= link_to 'Back', teams_path %>

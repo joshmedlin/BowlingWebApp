@@ -1,4 +1,7 @@
 class TeamsController < ApplicationController
+
+  #@current_team_members = Member.find("team_id = ?", params[:team_id])
+
   def create
     @team = Team.new(team_params)
 
