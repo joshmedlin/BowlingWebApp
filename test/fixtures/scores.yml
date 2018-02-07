@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  round: one
+  member: one
+  score: 1
+
+two:
+  round: two
+  member: two
+  score: 1
