@@ -1,0 +1,13 @@
+<h1>All Frames </h1>
+<% @frames.each do |frame| %>
+<div class= "well">
+  <h2>Round: <%=  frame.turn.round_id %> </h2>
+  <h2>Set: <%=  frame.turn.number %> </h2>
+	<h2>Name:<%= frame.member.name %> </h2>
+  <h3>Ball 1:  <%= frame.ball1 %> | Ball 2:  <%= frame.ball2 %> | Ball 3:  <%= frame.ball3 %> </h3>
+  <h2>Score: <%= frame.score %> </h2>
+</div>
+<%end%>
+<div class= "panel-body">
+        <%@frame= Frame.new %>
+				<%= render 'form' %>

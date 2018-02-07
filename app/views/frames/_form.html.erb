@@ -1,0 +1,10 @@
+<h1>New Frame</h1>
+<%=form_for @frame do |f| -%>
+    Round: <%= Round.last.id %> <br />
+    Set:  <%= Turn.last.number %><br />
+    Member:<%= Member.last.name %><br />
+    Ball 1: <%= f.text_field :ball1 %><br />
+    Ball 2: <%= f.text_field :ball2 %><br />
+    Ball 3: <%= f.text_field :ball3 %><br />
+    <%= f.submit%>
+<%end -%>
