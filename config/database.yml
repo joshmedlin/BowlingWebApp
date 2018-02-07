@@ -23,14 +23,9 @@ default: &default
 
 development:
   <<: *default
-  pool: 5
-  timeout: 5000
-  host: localhost
-  username: postgres
-  password: P@ssw0rd
   database: BowlingWebApp_development
 
-  # The specified database role being used to conP@ssw0rdnect to postgres.
+  # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
