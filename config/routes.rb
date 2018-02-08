@@ -5,5 +5,12 @@ Rails.application.routes.draw do
   get 'members/index'
 
   resources :members
-  root 'members#index'
+
+
+  resources :teams
+  root 'teams#index'
+
+
+  get 'teams/index'
+  get 'teams/new'
 end

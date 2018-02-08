@@ -1,0 +1,27 @@
+<p>
+  <strong>Team Name:</strong>
+  <%= @team.name %>
+</p>
+
+<p>
+  <strong>ID:</strong>
+  <%= @team.id %>
+</p>
+<br>
+<br>
+
+
+  <table id = "posttbl">
+    <tr>
+      <th>Members</th>
+    </tr>
+
+    <% MembersInTeam.where(team_id:  @team.id).each do |members_in_team| %>
+      <tr>
+        <td><%= members_in_team.member.name %></td>
+      </tr>
+    <% end %>
+  </table>
+<br>
+<br>
+<%= link_to 'Back', teams_path %>
