@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+<h3> Team: <%= @team.name %></h3>
+<%MembersInTeam.where(team_id: @team.id).each do |m| -%>
+  <p><%= Member.find(m.member_id).name  %>: </p>
+  <% print "getting inside loop "%>
+  <%= hidden_field :member_id, m.id %>
+  <% label_tag(:score, "Score: ") %>
+  <%=number_field_tag m.id%>
+<%end -%>
+</div>
