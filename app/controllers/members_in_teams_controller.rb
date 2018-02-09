@@ -3,8 +3,8 @@ class MembersInTeamsController < ApplicationController
     @MembersInTeam = MembersInTeam.new(m_in_t_params)
 
     @MembersInTeam.save
-
   end
+
   def show
     @MembersInTeam = MembersInTeam.find(params[:id])
   end

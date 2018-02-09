@@ -7,7 +7,7 @@
 <div class = "field">
   <% Member.all.each do |member| %>
   <li>
-    <%= check_box_tag 'member_name[]', member.id -%>
+    <%= check_box_tag 'member_id[]', member.id -%>
     <%= member.name %>
   </li>
   <% end %>
