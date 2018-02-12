@@ -13,6 +13,12 @@ class MembersInTeamsController < ApplicationController
     @MembersInTeam = MembersInTeam.all
   end
 
+
+  def destroy
+    @MembersInTeam = MembersInTeam.find(params[:id])
+    @MembersInTeam.destroy
+  end
+
   private
   def m_in_t_params
     params.require(:members_in_team).permit(:member_id, :team_id)

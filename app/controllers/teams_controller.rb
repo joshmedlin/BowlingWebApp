@@ -22,6 +22,9 @@ class TeamsController < ApplicationController
 
   def destroy
     @team = Team.find(params[:id])
+    MembersInTeam.where(team_id: @team.id).each do |members_in_team|
+        members_in_team.destroy
+    end
     @team.destroy
     redirect_to teams_path
   end
