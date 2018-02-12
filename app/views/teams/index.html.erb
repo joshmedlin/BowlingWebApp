@@ -1,0 +1,23 @@
+<h1>Listing all teams</h1>
+
+<table id = "posttbl">
+  <tr>
+    <th>Name</th>
+  </tr>
+
+  <% @teams.each do |team| %>
+    <tr>
+      <td><%= team.name %></td>
+      <td><%= link_to 'View', team_path(team) %></td>
+      <td><%= link_to 'Delete', team_path(team),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+<br>
+<br>
+
+<%= link_to 'New Team', teams_new_path %>
+<br><br>
+<%= link_to 'View Members', members_path %>
