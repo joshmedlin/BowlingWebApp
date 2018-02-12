@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   get 'teams/index'
   get 'teams/new'
 
-  root 'teams#index'
+  root 'rounds#index'
 end
