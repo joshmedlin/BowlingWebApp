@@ -9,7 +9,7 @@
     <tr>
       <td><%= team.name %></td>
       <td><%= link_to 'View', team_path(team) %></td>
-      <td><%= link_to 'Delete', team_path(team),
+      <td><%= link_to 'Delete', team_destroy_path(id: team),
         method: :delete,
         data: { confirm: 'Are you sure?' } %></td>
     </tr>
