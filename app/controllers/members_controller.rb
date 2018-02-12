@@ -1,6 +1,7 @@
 class MembersController < ApplicationController
 
 
+
     def create
 
       @member = Member.new(member_params)

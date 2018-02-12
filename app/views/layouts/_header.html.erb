@@ -1,0 +1,13 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+        <%= link_to "sample app", root_path, id: "logo" %>
+        <nav>
+            <ul class="nav navbar-nav navbar-left">
+                <li><%= link_to "Home",   root_path %></li>
+                <li><%= link_to_if(Day.where(date: Date.today).empty?, "New Round For New Day", '#')%></li>
+                <li><%= link_to_if(!Day.where(date: Date.today).empty?, "New Round for Same Day", '#')%></li>
+                <li><%= link_to "Manage Members", '#' %></li>
+            </ul>
+        </nav>
+    </div>
+</header>
