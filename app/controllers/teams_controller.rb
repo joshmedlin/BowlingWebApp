@@ -17,7 +17,17 @@ class TeamsController < ApplicationController
   end
 
   def index
-    @teams = Team.all
+    if TeamsInDay.where(day_id: Day.where(date: Date.today)).empty?
+      @teams = []
+    else
+      @teams_in_day = TeamsInDay.where(day_id: Day.where(date: Date.today).last.id)
+      teams = []
+      @teams_in_day.each do |team|
+        teams << team.id
+      end
+
+      @teams = Team.where(id: teams)
+    end
   end
 
   def destroy
