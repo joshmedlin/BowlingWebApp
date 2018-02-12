@@ -6,7 +6,7 @@
 <% @day.save %>
 <% else %>
 <h1>Rounds</h1>
-<%=Round.were(day_id: Day.where(date: Date.today).last.id).each do |round| %>
+<%=Round.where(day_id: Day.where(date: Date.today).last.id).each do |round| %>
 <!-- <% @teams_ids = [] %>
 <% TeamsInDay.where(day_id: Day.last.id).each do |t| %>
 <% @team_ids.add = t.team_id %>

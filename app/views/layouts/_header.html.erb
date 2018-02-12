@@ -4,8 +4,12 @@
         <nav>
             <ul class="nav navbar-nav navbar-left">
                 <li><%= link_to "Home",   root_path %></li>
-                <li><%= link_to_if(Day.where(date: Date.today).empty?, "New Round For New Day", 'round_path')%></li>
-                <li><%= link_to_if(!Day.where(date: Date.today).empty?, "New Round for Same Day", 'round_path')%></li>
+                <% newDay = false %>
+                <% if Day.where(date: Date.today).empty? && Round.where(day_id: Day.where(date: Date.today).last.id) %>
+                <% newDay = true %>
+                <% end %>
+                <li><%= link_to_if(newDay, "New Round For New Day", 'round_path')%></li>
+                <li><%= link_to_if(!newDay, "New Round for Same Day", 'round_path')%></li>
                 <li><%= link_to "Manage Members", '#' %></li>
             </ul>
         </nav>
