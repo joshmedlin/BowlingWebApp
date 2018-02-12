@@ -9,6 +9,16 @@ class TeamsController < ApplicationController
       @members_in_team.member_id = id
       @members_in_team.save
     end
+
+
+    if !Day.where(date: Date.today).empty?
+      @teams_in_day = TeamsInDay.new
+      @teams_in_day.day_id = Day.where(date: Date.today).last.id
+      @teams_in_day.team_id = @team.id
+
+      @teams_in_day.save
+    end
+
     redirect_to @team
   end
 
@@ -20,10 +30,9 @@ class TeamsController < ApplicationController
     if TeamsInDay.where(day_id: Day.where(date: Date.today)).empty?
       @teams = []
     else
-      @teams_in_day = TeamsInDay.where(day_id: Day.where(date: Date.today).last.id)
       teams = []
-      @teams_in_day.each do |team|
-        teams << team.id
+      TeamsInDay.where(day_id: Day.where(date: Date.today)).each do |team|
+        teams << team.team_id
       end
 
       @teams = Team.where(id: teams)
@@ -35,6 +44,12 @@ class TeamsController < ApplicationController
     MembersInTeam.where(team_id: @team.id).each do |members_in_team|
         members_in_team.destroy
     end
+
+    if !TeamsInDay.where(team_id: @team.id).empty?
+      @teams_in_day =  TeamsInDay.where(team_id: @team.id).last
+      @teams_in_day.destroy
+    end
+
     @team.destroy
     redirect_to teams_path
   end
