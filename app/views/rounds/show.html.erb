@@ -1,16 +1,1 @@
-<h1>|</h1>
-<h1>Round</h1>
-<%=form_for Round.last do |round| %>
 
-<% @teams_ids = [] %>
-<% TeamsInDay.where(day_id: Day.last.id).each do |t| %>
-<% @team_ids << t.team_id %>
-<%end%>
-<% p @team_ids%>
-
-<%Team.where(id: @team_ids).each do |team| %>
-  <%@team = team %>
-  <%= render 'teamRound' %>
-<%end%>
-<%= submit_tag "Submit" %>
-<%end%>

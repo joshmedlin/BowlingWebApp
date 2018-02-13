@@ -1,6 +1,8 @@
 class RoundsController < ApplicationController
   def show
   end
+  def inRound
+  end
   def new
       @round = Round.new
   end
