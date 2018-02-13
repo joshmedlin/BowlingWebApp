@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'results/index'
+
   get 'members/new'
   get 'members/index'
   get 'teams/index'
@@ -9,6 +11,7 @@ Rails.application.routes.draw do
   resources :scores
   resources :rounds
   resources :teams
+  resources :results
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 

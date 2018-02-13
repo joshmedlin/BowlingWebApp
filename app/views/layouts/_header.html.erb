@@ -10,7 +10,9 @@
                 <% end %>
                 <li><%= link_to_if(newDay, "New Round For New Day", 'round_path')%></li>
                 <li><%= link_to_if(!newDay, "New Round for Same Day", 'round_path')%></li>
-                <li><%= link_to "Manage Members", '#' %></li>
+                <li><%= link_to "Manage Teams", teams_path %></li>
+                <li><%= link_to "Manage Members", members_path %></li>
+                <li><%= link_to "Results", results_path %></li>
             </ul>
         </nav>
     </div>
