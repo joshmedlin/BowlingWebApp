@@ -5,18 +5,14 @@
             <ul class="nav navbar-nav navbar-left">
                 <li><%= link_to "Home",   root_path %></li>
                 <% newDay = false %>
-                <% if Day.where(date: Date.today).empty? && Round.where(day_id: Day.where(date: Date.today).last.id) %>
                 <% if (!Day.where(date: Date.today).empty? && TeamsInDay.where(day_id: Day.where(date: Date.today).last.id).empty?) %>
                 <% newDay = true %>
                 <% end %>
-                <li><%= link_to_if(newDay, "New Round For New Day", 'round_path')%></li>
-                <li><%= link_to_if(!newDay, "New Round for Same Day", 'round_path')%></li>
+                <li><%= link_to_if(newDay, "New Round For New Day", teams_path)%></li>
+                <li><%= link_to_if(!newDay, "New Round for Same Day", round_path_path)%></li>
                 <li><%= link_to "Manage Teams", teams_path %></li>
                 <li><%= link_to "Manage Members", members_path %></li>
                 <li><%= link_to "Results", results_path %></li>
-                <li><%= link_to_if(newDay, "New Round For New Day", teams_path)%></li>
-                <li><%= link_to_if(!newDay, "New Round for Same Day", round_path_path)%></li>
-                <li><%= link_to "Manage Teams/Members", teams_path %></li>
             </ul>
         </nav>
     </div>
