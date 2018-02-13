@@ -7,18 +7,15 @@
 <% else %>
 <h1>Rounds</h1>
 <%=Round.where(day_id: Day.where(date: Date.today).last.id).each do |round| %>
-<!-- <% @teams_ids = [] %>
-<% TeamsInDay.where(day_id: Day.last.id).each do |t| %>
-<% @team_ids.add = t.team_id %>
-<%end%>
-<% p @team_ids%> -->
 <h2>Round: <%= round.id %></h2>
 <%Team.all.each do |team| %>
   <%@team = team %>
   <h3> Team: <%= @team.name %></h3>
   <%MembersInTeam.where(team_id: @team.id).each do |m| -%>
     <p><%= Member.find(m.member_id).name  %>: </p>
-    <p><%= Score.where(round_id: round.id, member_id: m.member_id).last.score %> </p>
+    <% if !Score.where(round_id: round.id, member_id: m.member_id).empty? %>
+      <p><%= Score.where(round_id: round.id, member_id: m.member_id).last.score %> </p>
+    <%end%>
   <%end -%>
 <%end%>
 <%end%>
