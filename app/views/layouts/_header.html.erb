@@ -1,6 +1,5 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
     <div class="container">
-        <%= link_to "sample app", root_path, id: "logo" %>
         <nav>
             <ul class="nav navbar-nav navbar-left">
                 <li><%= link_to "Home",   root_path %></li>
@@ -8,8 +7,11 @@
                 <% if (!Day.where(date: Date.today).empty? && TeamsInDay.where(day_id: Day.where(date: Date.today).last.id).empty?) %>
                 <% newDay = true %>
                 <% end %>
-                <li><%= link_to_if(newDay, "New Round For New Day", teams_path)%></li>
-                <li><%= link_to_if(!newDay, "New Round for Same Day", round_path_path)%></li>
+                <% if newDay %>
+                <li><%= link_to("New Round For New Day", teams_path)%></li>
+                <%else%>
+                <li><%= link_to("New Round for Same Day", round_path_path)%></li>
+                <%end%>
                 <li><%= link_to "Manage Teams", teams_path %></li>
                 <li><%= link_to "Manage Members", members_path %></li>
                 <li><%= link_to "Results", results_path %></li>
