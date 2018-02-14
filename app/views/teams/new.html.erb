@@ -9,14 +9,14 @@
   <%if TeamsInDay.where(day_id: Day.where(date: Date.today)).empty?%>
     <%@teams = []%>
   <%else%>
-    <%teams = []%>
+    <%@teams = []%>
     <%TeamsInDay.where(day_id: Day.where(date: Date.today)).each do |team|%>
-      <%teams << team.team_id%>
+      <%@teams << team.team_id%>
     <%end%>
-    <%@teams = Team.where(id: teams)%>
+
     <%end%>
   <% @todaysmembers = [] %>
-  <% MembersInTeam.where(team_id: @teams.ids).each do |m| %>
+  <% MembersInTeam.where(team_id: @teams).each do |m| %>
     <% @todaysmembers << m.member_id %>
   <% end %>
   <%if Member.where.not(id: @todaysmembers).empty? %>
