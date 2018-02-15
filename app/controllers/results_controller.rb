@@ -49,12 +49,12 @@ class ResultsController < ApplicationController
       end
       numberOfRounds = numberOfRounds = + 1
       end
+      end
       averageScore = totalSumOfScores / (numberOfMembers * numberOfRounds)
       if averageScore > @maxTeamAverage
         @maxTeamAverage = averageScore
         @maxTeam = team.name
       end
-    end
   end
 end
 

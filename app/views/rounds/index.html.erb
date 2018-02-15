@@ -8,6 +8,7 @@
 <% roundNumber = 1  %>
 
 <%Round.where(day_id: Day.where(date: Date.today).last.id).each do |round| %>
+<%if !Score.where(round_id: round.id).empty? %>
 <h2>Round: <%= roundNumber %></h2>
 <% roundNumber = roundNumber + 1  %>
 <% @team_ids = [] %>
@@ -24,6 +25,7 @@
       <p><%= Score.where(round_id: round.id, member_id: m.member_id).last.score %> </p>
     <%end%>
   <%end %>
+<%end%>
 <%end%>
 <%end%>
 <%end%>
