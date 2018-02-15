@@ -2,6 +2,7 @@ class ResultsController < ApplicationController
   def index
     highScoreIndividual
     lowScoreIndividual
+    highScoreTeam
 
   end
 
@@ -26,7 +27,33 @@ class ResultsController < ApplicationController
   end
 
   def highScoreTeam
-
+    @maxTeamAverage = 0
+    @maxTeam = ""
+    numberOfRounds = 0
+    @team_ids = []
+    TeamsInDay.where(day_id: Day.where(date: Date.today).last.id).each do |t|
+      @team_ids << t.team_id
+    end
+    Team.find(@team_ids).each do |team|
+      @team = team
+      numberOfMembers = 0
+      totalSumOfScores = 0
+      numberOfRounds = 0
+      Round.where(day_id: Day.where(date: Date.today).last.id).each do |round|
+      MembersInTeam.where(team_id: @team.id).each do |m|
+        if !Score.where(round_id: round.id, member_id: m.member_id).empty?
+          numberOfMembers = numberOfMembers + 1
+          totalSumOfScores = totalSumOfScores + Score.where(round_id: round.id, member_id: m.member_id).last.score.to_i
+        end
+      end
+      numberOfRounds = numberOfRounds = + 1
+      end
+      averageScore = totalSumOfScores / (numberOfMembers * numberOfRounds)
+      if averageScore > @maxTeamAverage
+        @maxTeamAverage = averageScore
+        @maxTeam = team.name
+      end
   end
+end
 
 end
