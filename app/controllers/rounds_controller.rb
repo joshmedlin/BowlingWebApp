@@ -40,7 +40,7 @@ class RoundsController < ApplicationController
 
   private
 
-  def score_params
+  def round_params
   params.require(:score).permit(:round_id, :member_id, :score)
   end
 end

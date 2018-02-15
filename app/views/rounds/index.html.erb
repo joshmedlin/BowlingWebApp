@@ -4,10 +4,18 @@
 <% @day.date = Date.today %>
 <% @day.save %>
 <% else %>
-<h1>Rounds</h1>
-<%=Round.where(day_id: Day.where(date: Date.today).last.id).each do |round| %>
-<h2>Round: <%= round.id %></h2>
-<%Team.all.each do |team| %>
+<h1>Today's Rounds</h1>
+<% roundNumber = 1  %>
+
+<%Round.where(day_id: Day.where(date: Date.today).last.id).each do |round| %>
+<h2>Round: <%= roundNumber %></h2>
+<% roundNumber = roundNumber + 1  %>
+<% @team_ids = [] %>
+<% TeamsInDay.where(day_id: Day.where(date: Date.today).last.id).each do |t| %>
+<% @team_ids << t.team_id %>
+<%end%>
+
+<%Team.find(@team_ids).each do |team| %>
   <%@team = team %>
   <h3> Team: <%= @team.name %></h3>
   <%MembersInTeam.where(team_id: @team.id).each do |m| -%>
@@ -15,7 +23,7 @@
     <% if !Score.where(round_id: round.id, member_id: m.member_id).empty? %>
       <p><%= Score.where(round_id: round.id, member_id: m.member_id).last.score %> </p>
     <%end%>
-  <%end -%>
+  <%end %>
 <%end%>
 <%end%>
 <%end%>
