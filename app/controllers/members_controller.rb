@@ -1,25 +1,21 @@
 class MembersController < ApplicationController
 
-
-
     def create
 
       @member = Member.new(member_params)
+      @member.inactive = false
       @member.save
       redirect_to members_path
     end
 
-    def show
-      @member = Member.find(params[:id])
-    end
-
     def index
-      @members = Member.all
+      @members = Member.where(inactive: [false, nil])
     end
 
-    def destroy
+    def deactivate
       @member = Member.find(params[:id])
-      @member.destroy
+      @member.inactive = true
+      @member.save
       redirect_to members_path
     end
 

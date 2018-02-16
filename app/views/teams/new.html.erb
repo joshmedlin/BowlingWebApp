@@ -22,10 +22,12 @@
     <h2>All members are on a team today. <h2>
   <%else%>
     <% Member.where.not(id: @todaysmembers).each do |member| %>
+      <% if (!member.inactive || member.inactive == nil) %>
       <li>
         <%= check_box_tag 'member_id[]', member.id -%>
         <%= member.name %>
       </li>
+      <% end %>
     <% end %>
 
 

@@ -8,8 +8,8 @@
   <% @members.each do |member| %>
     <tr>
       <td><%= member.name %></td>
-      <td><%= link_to 'Delete', member_path(member),
-        method: :delete,
+      <td><%= link_to 'Remove', members_deactivate_path(id: member),
+        method: :deactivate,
         data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>

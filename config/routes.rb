@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get 'members/new'
   get 'members/index'
+  get 'members_deactivate' => 'members#deactivate'
   get 'teams/index'
   get 'teams/new'
   get 'team_destroy' => 'teams#destroy'
