@@ -1,7 +1,4 @@
 <h1>Round</h1>
-<% @round = Round.new %>
-<% @round.day_id = Day.where(date: Date.today).last.id %>
-<% @round.save %>
 <%=form_for Round.last do |round| %>
 
 <% @teams_ids = [] %>

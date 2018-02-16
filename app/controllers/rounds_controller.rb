@@ -12,6 +12,9 @@ class RoundsController < ApplicationController
 
   def update
     p params
+    @round = Round.new
+    @round.day_id = Day.where(date: Date.today).last.id
+    @round.save
     round_id = Round.last.id
     worked = true
       params[:member_id].each do |value|
