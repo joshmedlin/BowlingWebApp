@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'teams/new'
   get 'team_destroy' => 'teams#destroy'
   get "round_path" => "rounds#inRound"
+  get "day_results_path" => "day_results#index"
+  get "day_results_day_path" => "day_results#dayIndex"
   resources :members
   resources :scores
   resources :rounds

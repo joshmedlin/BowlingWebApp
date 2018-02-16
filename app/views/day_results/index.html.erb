@@ -1,0 +1,18 @@
+<h1>Listing all Days</h1>
+
+<table id = "posttbl">
+  <tr>
+    <th>Name</th>
+  </tr>
+
+
+<% @days.each do |day| %>
+  <tr>
+    <td><%= day.date %></td>
+    <td><%= link_to 'View', day_results_day_path_path(day),
+      method: :dayIndex %></td>
+  </tr>
+<% end %>
+</table>
+<br>
+<br>

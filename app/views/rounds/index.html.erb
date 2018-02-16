@@ -3,6 +3,8 @@
 <% @day = Day.new %>
 <% @day.date = Date.today %>
 <% @day.save %>
+<%elsif TeamsInDay.where(day_id: Day.where(date: Date.today).last.id).empty? %>
+<h1>Welcome to the Bowling Web App</h1>
 <% else %>
 <h1>Today's Rounds</h1>
 <% roundNumber = 1  %>
