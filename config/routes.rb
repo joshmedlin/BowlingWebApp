@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'team_destroy' => 'teams#destroy'
   get "round_path" => "rounds#inRound"
   get "day_results_path" => "day_results#index"
+  get "member_averages_path" => "members#results"
   get "day_results_day_path" => "day_results#dayIndex"
   resources :members
   resources :scores

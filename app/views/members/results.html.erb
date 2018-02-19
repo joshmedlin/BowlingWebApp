@@ -1,0 +1,19 @@
+
+<table id = "posttbl">
+  <tr>
+    <th>Name</th>
+    <th>Average Score</th>
+  </tr>
+  <% if Member.all.any? %>
+  <% Member.all.each do |member| %>
+    <tr>
+      <td><%= member.name %></td>
+      <% avg(member.id) %>
+      <td><%= @avg %></td>
+
+    </tr>
+  <% end %>
+  <%end %>
+</table>
+<br>
+<br>
