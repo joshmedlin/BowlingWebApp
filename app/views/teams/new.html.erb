@@ -1,10 +1,8 @@
 <%= form_with scope: :team, url: teams_path, local: true do |form| %>
  <h2>Create New Team</h2>
 
-  <br>
 
-
-<div class = "field">
+<div id = "listmems">
   <%if TeamsInDay.where(day_id: Day.where(date: Date.today)).empty?%>
     <%@teams = []%>
   <%else%>
@@ -12,7 +10,6 @@
     <%TeamsInDay.where(day_id: Day.where(date: Date.today)).each do |team|%>
       <%@teams << team.team_id%>
     <%end%>
-
     <%end%>
   <% @todaysmembers = [] %>
   <% MembersInTeam.where(team_id: @teams).each do |m| %>
@@ -21,7 +18,7 @@
   <%if Member.where.not(id: @todaysmembers).empty? %>
     <h2>All members are on a team today. <h2>
   <%else%>
-    <% Member.where.not(id: @todaysmembers).each do |member| %>
+    <% Member.order("name ASC").where.not(id: @todaysmembers).each do |member| %>
       <% if (!member.inactive || member.inactive == nil) %>
       <li>
         <%= check_box_tag 'member_id[]', member.id -%>
@@ -29,12 +26,11 @@
       </li>
       <% end %>
     <% end %>
+  <% end %>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-
-    </div>
-
-    <br>
-    <br>
+<div id = "teamname">
     <p>
       <%= form.label :team_name %><br>
       <%= form.text_field :name %>
@@ -42,6 +38,7 @@
     <p>
       <%= form.submit %>
     </p>
-    <% end %>
+</div>
 <%end%>
+<br><br>
 <%= link_to 'Back', teams_path %>
