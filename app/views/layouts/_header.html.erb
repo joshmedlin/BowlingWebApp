@@ -2,25 +2,25 @@
     <div class="container">
         <nav>
             <ul class="nav navbar-nav navbar-left">
-                <li><%= link_to "Home",   root_path %></li>
+                <li><%= link_to "Home",   root_path, class: cp(root_path) %></li>
                 <% newDay = false %>
                 <% if (!Day.where(date: Date.today).empty? && TeamsInDay.where(day_id: Day.where(date: Date.today).last.id).empty?) %>
                 <% newDay = true %>
                 <% end %>
                 <% if !newDay %>
-                <li><%= link_to("New Round", round_path_path)%></li>
+                <li><%= link_to("New Round", round_path_path, class: cp(round_path_path))%></li>
                 <%end%>
-                <li><%= link_to "Manage Teams", teams_path %></li>
-                <li><%= link_to "Manage Members", members_path %></li>
+                <li><%= link_to "Manage Teams", teams_path, class: cp(teams_path) %></li>
+                <li><%= link_to "Manage Members", members_path, class: cp(members_path) %></li>
                 <% if (!Day.where(date: Date.today).empty? &&
                   !Round.where(day_id: Day.where(date: Date.today).last.id).empty? &&
                   !Score.where(round_id: Round.where(day_id: Day.where(date: Date.today).last.id).last.id).empty?) %>
                 <% todayHasRounds = true %>
                 <% end %>
                 <% if todayHasRounds %>
-                <li><%= link_to "Today's Results", results_path %></li>
+                <li><%= link_to "Today's Results", results_path, class: cp(results_path) %></li>
                 <% end %>
-                <li><%= link_to "Other Day's Results", day_results_path_url %></li>
+                <li><%= link_to "Other Day's Results", day_results_path_url, class: cp(day_results_path_url) %></li>
             </ul>
         </nav>
     </div>
