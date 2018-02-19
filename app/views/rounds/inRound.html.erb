@@ -1,5 +1,13 @@
 <h1>Round</h1>
-<%=form_for Round.last do |round| %>
+<% if !Round.any? %>
+  <%print "no rounds" %>
+  <%@lastRound = Round.new %>
+  <%@lastRound.day_id = Day.where(date: Date.today).last.id %>
+  <%@lastRound.save %>
+<%else%>
+  <%@lastRound = Round.last %>
+<%end %>
+<%=form_for @lastRound do |round| %>
 
 <% @teams_ids = [] %>
 <% TeamsInDay.where(day_id: Day.where(date: Date.today).last.id).each do |t| %>

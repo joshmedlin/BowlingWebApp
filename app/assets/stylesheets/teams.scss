@@ -23,3 +23,12 @@ table#posttbl th,td {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+#team ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#team li {
+  display: inline-block;
+}

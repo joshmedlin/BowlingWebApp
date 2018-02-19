@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'members_deactivate' => 'members#deactivate'
   get 'teams/index'
   get 'teams/new'
+  get "day_path" => "rounds#show"
   get 'team_destroy' => 'teams#destroy'
   get "round_path" => "rounds#inRound"
   get "day_results_path" => "day_results#index"

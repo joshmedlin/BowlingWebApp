@@ -1,5 +1,6 @@
 class RoundsController < ApplicationController
   def show
+    @day = Day.find(params[:format])
   end
   def inRound
   end
