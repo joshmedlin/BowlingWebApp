@@ -20,21 +20,25 @@
   <%else%>
     <% Member.order("name ASC").where.not(id: @todaysmembers).each do |member| %>
       <% if (!member.inactive || member.inactive == nil) %>
-      <li>
-        <%= check_box_tag 'member_id[]', member.id -%>
-        <%= member.name %>
-      </li>
+      <div class = "columns">
+      <ul>
+        <li>
+          <%= check_box_tag 'member_id[]', member.id -%>
+          <%= member.name %>
+        </li>
+      </ul>
+    </div>
       <% end %>
     <% end %>
   <% end %>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-<div id = "teamname">
+<div style = "margin-top: 20px;">
     <p>
       <%= form.label :team_name %><br>
       <%= form.text_field :name %>
     </p>
+    <br>
     <p>
       <%= form.submit %>
     </p>
