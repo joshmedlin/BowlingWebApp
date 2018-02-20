@@ -5,7 +5,9 @@ module MembersHelper
   sum = 0
   Score.where(member_id: id).each do |score|
     scores = scores + 1
-    sum = sum + score.score
+    unless score.score.nil?
+      sum = sum + score.score
+    end
   end
   p id
   if scores > 0
