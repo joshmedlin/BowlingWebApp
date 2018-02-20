@@ -20,8 +20,11 @@
                 <% if todayHasRounds %>
                 <li><%= link_to "Today's Results", results_path, class: cp(results_path) %></li>
                 <% end %>
+                <% if !Day.where.not(date: Date.today ).empty? %>
                 <li><%= link_to "Other Day's Results", day_results_path_url, class: cp(day_results_path_url) %></li>
+                <%end%>
                 <li><%= link_to "Member Averages", member_averages_path_url, class: cp(member_averages_path_url) %></li>
+
             </ul>
         </nav>
     </div>

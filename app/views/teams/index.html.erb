@@ -2,7 +2,11 @@
 
 <table id = "posttbl">
   <tr>
+    <%if  @teams.any? %>
     <th>Name</th>
+    <%else %>
+    <th>No teams created yet for today's bowling, please create a new team.</th>
+    <%end%>
   </tr>
 
   <% @teams.each do |team| %>

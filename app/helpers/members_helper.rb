@@ -7,6 +7,9 @@ module MembersHelper
     scores = scores + 1
     sum = sum + score.score
   end
-  @avg = sum / scores
+  p id
+  if scores > 0
+    @avg = sum / scores
   end
+end
 end
