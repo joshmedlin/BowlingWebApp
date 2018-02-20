@@ -9,7 +9,7 @@ class MembersController < ApplicationController
     end
 
     def index
-      @members = Member.where(inactive: [false, nil])
+      @members = Member.order("name ASC").where(inactive: [false, nil])
     end
 
     def deactivate

@@ -27,8 +27,15 @@ table#posttbl th,td {
 #team ul {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 10px;
 }
 #team li {
   display: inline-block;
+}
+
+#listmems li {
+    display: block;
+    width: 20%;
+    float: left;
+    margin: 5px;
 }
