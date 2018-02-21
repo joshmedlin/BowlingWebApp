@@ -19,17 +19,21 @@
           <%@team = team %>
         <%end%>
       <%end%>
+      <th style="text-align: center;border: 1px solid black">Average</th>
     </tr>
 
     <!-- fill in table with members and scores -->
     <%MembersInTeam.where(team_id: @team.id).each do |m| -%>
     <tr>
       <td style="text-align: center;border: 1px solid black"><%= Member.find(m.member_id).name  %> </td>
+      <%@sum = 0 %>
       <%Round.where(day_id: Day.where(date: @day.date).last.id).each do |round| %>
         <% if !Score.where(round_id: round.id, member_id: m.member_id).empty? %>
           <td style="text-align: center;border: 1px solid black" ><%= Score.where(round_id: round.id, member_id: m.member_id).last.score %></td>
+          <% @sum = @sum +  Score.where(round_id: round.id, member_id: m.member_id).last.score %>
         <%end%>
       <%end%>
+      <td style="text-align: center;border: 1px solid black"><%= (@sum.to_f / (roundNumber-1)).to_d.truncate(2).to_f  %> </td>
     </tr>
     <%end%>
   </table>
