@@ -26,9 +26,7 @@
     <tr>
       <td style="text-align: center;border: 1px solid black"><%= Member.find(m.member_id).name  %> </td>
       <%Round.where(day_id: Day.where(date: @day.date).last.id).each do |round| %>
-        <% if Score.where(round_id: round.id, member_id: m.member_id).empty? %>
-          <td style="text-align: center;border: 1px solid black"> </td>
-        <%else%>
+        <% if !Score.where(round_id: round.id, member_id: m.member_id).empty? %>
           <td style="text-align: center;border: 1px solid black" ><%= Score.where(round_id: round.id, member_id: m.member_id).last.score %></td>
         <%end%>
       <%end%>

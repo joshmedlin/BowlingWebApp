@@ -16,7 +16,7 @@
     <% @todaysmembers << m.member_id %>
   <% end %>
   <%if Member.where.not(id: @todaysmembers).empty? %>
-    <h2>All members are on a team today. <h2>
+    <p style="font-size: 20px;">Please add more members. </p>
   <%else%>
     <% Member.order("name ASC").where.not(id: @todaysmembers).each do |member| %>
       <% if (!member.inactive || member.inactive == nil) %>
