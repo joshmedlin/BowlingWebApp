@@ -39,18 +39,7 @@ class RoundsController < ApplicationController
 
   end
 
-  def index
-    round_ids = []
-    Round.all.each do |round|
-      if !Score.where(round_id: round.id).empty?
-        round_ids << round.id
-      end
-    end
-    @day_ids = []
-    Round.find(round_ids).each do |round|
-      @day_ids << round.day_id
-    end
-    @days = Day.find(@day_ids)
+  def inde
   end
 
   private

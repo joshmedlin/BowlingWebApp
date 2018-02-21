@@ -1,25 +1,39 @@
+<link rel="stylesheet" type="text/css" href="rounds.scss">
 <h1><%= @day.date %></h1>
 <% @team_ids = [] %>
 <% TeamsInDay.where(day_id: Day.where(date: @day.date).last.id).each do |t| %>
   <% @team_ids << t.team_id %>
 <%end%>
-<%Team.find(@team_ids).each do |team| %>
-  <div class="col-sm-6">
-  <h2> Team: <%= team.name %></h2>
-  <% roundNumber = 1  %>
-  <%Round.where(day_id: Day.where(date: @day.date).last.id).each do |round| %>
-    <%if !Score.where(round_id: round.id).empty? %>
-      <h3>Round: <%= roundNumber %></h3>
-      <% roundNumber = roundNumber + 1  %>
-      <%@team = team %>
 
+<%Team.find(@team_ids).each do |team| %>
+  <h2> Team: <%= team.name %></h2>
+  <table style="border: 1px solid black; width: 100%;">
+    <tr>
+      <!-- make table header with round numbers -->
+      <th style="text-align: center;border: 1px solid black">Round #</th>
+      <% roundNumber = 1  %>
+      <%Round.where(day_id: Day.where(date: @day.date).last.id).each do |round| %>
+        <%if !Score.where(round_id: round.id).empty? %>
+          <th style="text-align: center;border: 1px solid black"><%= roundNumber %></th>
+          <% roundNumber = roundNumber + 1  %>
+          <%@team = team %>
+        <%end%>
+      <%end%>
+    </tr>
+
+    <!-- fill in table with members and scores -->
     <%MembersInTeam.where(team_id: @team.id).each do |m| -%>
-      <p><%= Member.find(m.member_id).name  %>: </p>
-      <% if !Score.where(round_id: round.id, member_id: m.member_id).empty? %>
-      <p><%= Score.where(round_id: round.id, member_id: m.member_id).last.score %> </p>
+    <tr>
+      <td style="text-align: center;border: 1px solid black"><%= Member.find(m.member_id).name  %> </td>
+      <%Round.where(day_id: Day.where(date: @day.date).last.id).each do |round| %>
+        <% if Score.where(round_id: round.id, member_id: m.member_id).empty? %>
+          <td style="text-align: center;border: 1px solid black"> </td>
+        <%else%>
+          <td style="text-align: center;border: 1px solid black" ><%= Score.where(round_id: round.id, member_id: m.member_id).last.score %></td>
+        <%end%>
+      <%end%>
+    </tr>
     <%end%>
-  <%end %>
-<%end%>
+  </table>
 <%end%>
 </div>
-<%end%>
