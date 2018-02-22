@@ -1,25 +1,4 @@
 <h1><%= @day.date %></h1>
-<% @team_ids = [] %>
-<% TeamsInDay.where(day_id: Day.where(date: @day.date).last.id).each do |t| %>
-  <% @team_ids << t.team_id %>
-<%end%>
-<%Team.find(@team_ids).each do |team| %>
-  <div class="col-sm-6">
-  <h2> Team: <%= team.name %></h2>
-  <% roundNumber = 1  %>
-  <%Round.where(day_id: Day.where(date: @day.date).last.id).each do |round| %>
-    <%if !Score.where(round_id: round.id).empty? %>
-      <h3>Round: <%= roundNumber %></h3>
-      <% roundNumber = roundNumber + 1  %>
-      <%@team = team %>
-
-    <%MembersInTeam.where(team_id: @team.id).each do |m| -%>
-      <p><%= Member.find(m.member_id).name  %>: </p>
-      <% if !Score.where(round_id: round.id, member_id: m.member_id).empty? %>
-      <p><%= Score.where(round_id: round.id, member_id: m.member_id).last.score %> </p>
-    <%end%>
-  <%end %>
-<%end%>
-<%end%>
+<div id = "tables">
+    <%= render 'rounds/resulttables' %>
 </div>
-<%end%>
