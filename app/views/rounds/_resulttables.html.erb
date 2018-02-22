@@ -19,7 +19,8 @@
       <%end%>
       <th style="text-align: center;border: 1px solid black">Average</th>
     </tr>
-
+    <% @teamavg = 0 %>
+    <% @num_members = 0 %>
     <!-- fill in table with members and scores -->
     <%MembersInTeam.where(team_id: @team.id).each do |m| -%>
     <tr>
@@ -31,8 +32,14 @@
           <% @sum = @sum +  Score.where(round_id: round.id, member_id: m.member_id).last.score %>
         <%end%>
       <%end%>
-      <td style="text-align: center;border: 1px solid black"><%= (@sum.to_f / (roundNumber-1)).to_d.truncate(2).to_f  %> </td>
+      <% @avg = (@sum.to_f / (roundNumber-1)).to_d.truncate(2).to_f %>
+      <td style="text-align: center;border: 1px solid black"><%=@avg%> </td>
+      <% @num_members = @num_members +1 %>
+      <% @teamavg = @teamavg + @avg %>
     </tr>
     <%end%>
+
   </table>
+  <h4> Team Average: <%= (@teamavg / @num_members).to_d.truncate(2).to_f %> <h4>
+  <br>
 <%end%>
