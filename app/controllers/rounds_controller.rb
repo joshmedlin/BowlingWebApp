@@ -39,7 +39,7 @@ class RoundsController < ApplicationController
 
   end
 
-  def inde
+  def index
   end
 
   private
