@@ -3,11 +3,13 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     @team.save
 
-    params[:member_id].each do |id|
-      @members_in_team = MembersInTeam.new
-      @members_in_team.team_id = @team.id
-      @members_in_team.member_id = id
-      @members_in_team.save
+    if !params[:member_id].nil?
+      params[:member_id].each do |id|
+        @members_in_team = MembersInTeam.new
+        @members_in_team.team_id = @team.id
+        @members_in_team.member_id = id
+        @members_in_team.save
+      end
     end
 
 
