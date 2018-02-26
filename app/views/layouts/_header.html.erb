@@ -11,8 +11,8 @@
                 <% if !newDay %>
                 <li><%= link_to("New Round", round_path_path, class: cp(round_path_path))%></li>
                 <%end%>
-                <li><%= link_to "Manage Teams", teams_path, class: cp(teams_path) %></li>
                 <li><%= link_to "Manage Members", members_path, class: cp(members_path) %></li>
+                <li><%= link_to "Manage Teams", teams_path, class: cp(teams_path) %></li>
                 <% if (!Day.where(date: Date.today).empty? &&
                   !Round.where(day_id: Day.where(date: Date.today).last.id).empty? &&
                   !Score.where(round_id: Round.where(day_id: Day.where(date: Date.today).last.id).last.id).empty?) %>

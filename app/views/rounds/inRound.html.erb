@@ -10,14 +10,17 @@
 <%=form_for @lastRound do |round| %>
 
 <% @teams_ids = [] %>
-<% TeamsInDay.where(day_id: Day.where(date: Date.today).last.id).each do |t| %>
-<% @teams_ids << t.team_id %>
-<%end%>
+<%if TeamsInDay.where(day_id: Day.where(date: Date.today)).empty? %>
+  <h3>Please add teams</h3><br><br>
+<%else%>
+  <% TeamsInDay.where(day_id: Day.where(date: Date.today).last.id).each do |t| %>
+  <% @teams_ids << t.team_id %>
+  <%end%>
 
-
-<%Team.where(id: @teams_ids).each do |team| %>
-  <%@team = team %>
-  <%= render 'teamRound' %>
-<%end%>
-<%= submit_tag "Submit" %>
+  <%Team.where(id: @teams_ids).each do |team| %>
+    <%@team = team %>
+    <%= render 'teamRound' %>
+    <%end%>
+    <%= submit_tag "Submit" %>
+    <%end%>
 <%end%>
