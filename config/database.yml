@@ -97,6 +97,9 @@ test:
 #
 production:
   <<: *default
-  database: BowlingWebApp_production
-  username: BowlingWebApp
-  password: <%= ENV['BOWLINGWEBAPP_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  host: bowlingappserver.postgres.database.azure.com
+  port: 5432
+  database: mydb
+  username: myadmin@bowlingappserver
+  password: Fusion360
