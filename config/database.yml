@@ -98,8 +98,8 @@ test:
 production:
   <<: *default
   adapter: postgresql
-  host: bowlingappserver.postgres.database.azure.com
+  host: <%= ENV['DB_HOST'] %>
   port: 5432
-  database: mydb
-  username: myadmin@bowlingappserver
-  password: Fusion360
+  database: <%= ENV['DB_DATABASE'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
