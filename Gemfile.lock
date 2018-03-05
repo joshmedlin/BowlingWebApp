@@ -47,10 +47,8 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
-
     bootstrap-will_paginate (1.0.0)
       will_paginate
-
     builder (3.2.3)
     byebug (10.0.0)
     capybara (2.17.0)
@@ -73,6 +71,7 @@ GEM
     crass (1.0.3)
     erubi (1.7.0)
     execjs (2.7.0)
+    ffi (1.9.18-x64-mingw32)
     ffi (1.9.18-x86-mingw32)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -92,8 +91,11 @@ GEM
     minitest (5.11.3)
     multi_json (1.13.1)
     nio4r (2.2.0)
+    nokogiri (1.8.2-x64-mingw32)
+      mini_portile2 (~> 2.3.0)
     nokogiri (1.8.2-x86-mingw32)
       mini_portile2 (~> 2.3.0)
+    pg (0.21.0-x64-mingw32)
     pg (0.21.0-x86-mingw32)
     public_suffix (3.0.1)
     puma (3.11.2)
@@ -174,6 +176,7 @@ GEM
       nokogiri (~> 1.8)
 
 PLATFORMS
+  x64-mingw32
   x86-mingw32
 
 DEPENDENCIES
