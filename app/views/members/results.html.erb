@@ -4,7 +4,8 @@
     <th>Name</th>
     <th>Average Score</th>
   </tr>
-  <% Member.order("name ASC").where(inactive: [false, nil]).each do |member| %>
+  <% if Member.all.any? %>
+  <% Member.all.each do |member| %>
     <tr>
       <td><%= member.name %></td>
       <% avg(member.id) %>
@@ -12,6 +13,7 @@
 
     </tr>
   <% end %>
+  <%end %>
 </table>
 <br>
 <br>

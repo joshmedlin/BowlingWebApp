@@ -97,9 +97,6 @@ test:
 #
 production:
   <<: *default
-  adapter: postgresql
-  host: <%= ENV['DB_HOST'] %>
-  port: 5432
-  database: <%= ENV['DB_DATABASE'] %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
+  database: BowlingWebApp_production
+  username: BowlingWebApp
+  password: <%= ENV['BOWLINGWEBAPP_DATABASE_PASSWORD'] %>

@@ -1,12 +1,14 @@
 <h1>Listing all teams</h1>
 
-<%if  !@teams.any? %>
-<p>No teams created yet for today's bowling, please create a new team.</p>
-<%else%>
 <table id = "posttbl">
   <tr>
+    <%if  @teams.any? %>
     <th>Name</th>
+    <%else %>
+    <th>No teams created yet for today's bowling, please create a new team.</th>
+    <%end%>
   </tr>
+
   <% @teams.each do |team| %>
     <tr>
       <td><%= team.name %></td>
@@ -17,9 +19,8 @@
     </tr>
   <% end %>
 </table>
-<%end%>
 <br>
 <br>
 
-<%= button_to 'New Team', teams_new_path, :class => "team", :method => :get %>
+<%= link_to 'New Team', teams_new_path %>
 <br><br>
