@@ -105,4 +105,3 @@ production:
   password: <%= ENV['DB_PASSWORD'] %>
   sslmode: verify-ca
   sslroot: root.crt
-  sslca: BaltimoreCyberTrustRoot.crt.pem
